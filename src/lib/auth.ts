@@ -7,4 +7,15 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
   emailAndPassword: { enabled: true },
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        input: false,
+      },
+    },
+  },
 });
+
+export type session = typeof auth.$Infer.Session;
+export type User = typeof auth.$Infer.Session.user;
